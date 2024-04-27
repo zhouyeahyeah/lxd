@@ -1,20 +1,10 @@
-//»·ÐÎÁ´±í
-//ÅÐ¶ÏÁ´±íÊÇ·ñ»·
-//Èç¹ûÓÐ»·£¬ÈçºÎÕÒµ½Õâ¸ö»·µÄ??
+//çŽ¯å½¢é“¾è¡¨II
+//ç»™å®šâ¼€ä¸ªé“¾è¡¨ï¼Œè¿”å›žé“¾è¡¨å¼€å§‹â¼ŠçŽ¯çš„ç¬¬â¼€ä¸ªèŠ‚ç‚¹ã€‚ å¦‚æžœé“¾è¡¨â½†çŽ¯ï¼Œåˆ™è¿”å›ž null
 
-/**
-* Definition for singly-linked list.
-* struct ListNode {
-* int val;
-* ListNode *next;
-* ListNode(int x) : val(x), next(NULL) {}
-* };
-*/
 
 #include <iostream>
 using namespace std;
 
-// Á´±í½ÚµãµÄ¶¨Òå
 struct ListNode {
     int val;
     ListNode *next;
@@ -29,7 +19,7 @@ public:
         while(fast != NULL && fast->next != NULL) {
             slow = slow->next;
             fast = fast->next->next;
-            // ¿ìÂýÖ¸ÕëÏàÓö£¬´ËÊ±´Óhead ºÍ ÏàÓöµã£¬Í¬Ê±²éÕÒÖ±?ÏàÓö
+            // å¿«æ…¢æŒ‡é’ˆç›¸é‡ï¼Œæ­¤æ—¶ä»Žhead å’Œ ç›¸é‡ç‚¹ï¼ŒåŒæ—¶æŸ¥æ‰¾ç›´â¾„ç›¸é‡
             if (slow == fast) {
                 ListNode* index1 = fast;
                 ListNode* index2 = head;
@@ -37,7 +27,7 @@ public:
                     index1 = index1->next;
                     index2 = index2->next;
                 }
-            return index2; // ·µ»Ø»·µÄ??
+            return index2;
             }
         }
     return NULL;
@@ -45,30 +35,25 @@ public:
 };
 
 int main() {
-    // ´´½¨Á´±í½Úµã
     ListNode* head = new ListNode(3);
     ListNode* node1 = new ListNode(2);
     ListNode* node2 = new ListNode(0);
     ListNode* node3 = new ListNode(-4);
 
-    // ¹¹½¨»·
     head->next = node1;
     node1->next = node2;
     node2->next = node3;
-    node3->next = node1; // »·µÄÈë¿ÚÊÇ node1
+    node3->next = node1; 
 
-    // ´´½¨ Solution ¶ÔÏó
     Solution solution;
 
-    // ²âÊÔ¼ì²â»·µÄº¯Êý
     ListNode* result = solution.detectCycle(head);
     if (result != NULL) {
-        cout << "»·µÄÈë¿ÚÖµÎª: " << result->val << endl;
+        cout << "result's val: " << result->val << endl;
     } else {
-        cout << "Á´±íÖÐ²»´æÔÚ»·" << endl;
+        cout << "NULL" << endl;
     }
 
-    // ÊÍ·ÅÄÚ´æ
     delete head;
     delete node1;
     delete node2;
